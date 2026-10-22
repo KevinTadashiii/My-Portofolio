@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "frontend-design": {
+      "source": "buildermethods/design-os",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/frontend-design/SKILL.md",
+      "computedHash": "7f012fa55792c05f7b046cd1bacdf3c2eb03a1f15f1d3275dd3102abff2bebea"
+    }
+  }
+}
