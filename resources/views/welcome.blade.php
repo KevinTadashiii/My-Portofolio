@@ -1,6 +1,6 @@
 @extends('layouts.portofolio')
 
-@section('title', 'Kevin Kanigara — Full-Stack Engineer')
+@section('title', 'Kevin Kanigara — Software Engineering Student')
 
 @section('content')
 
@@ -86,14 +86,14 @@
 
             {{-- Role tagline with highlight --}}
             <div class="mt-6 flex flex-wrap items-center gap-3 opacity-0" style="animation: fadeUp 0.5s ease forwards 0.6s;">
-                <span class="font-mono text-sm text-muted">Full-Stack Engineer ·</span>
-                <span class="font-mono text-sm text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">Laravel</span>
+                <span class="font-mono text-sm text-muted">Software Engineering Student ·</span>
+                <span class="font-mono text-sm text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">RPL</span>
                 <span class="font-mono text-sm text-muted">·</span>
-                <span class="font-mono text-sm text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">TypeScript</span>
+                <span class="font-mono text-sm text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">SMKN 2 Bandung</span>
                 <span class="font-mono text-sm text-muted">·</span>
-                <span class="font-mono text-sm text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">Kubernetes</span>
+                <span class="font-mono text-sm text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">5 Yrs Coding</span>
                 <span class="font-mono text-sm text-muted">·</span>
-                <span class="font-mono text-sm text-muted">Building at the edge of scale.</span>
+                <span class="font-mono text-sm text-muted">Learning by building.</span>
             </div>
         </div>
 
@@ -107,7 +107,7 @@
                     <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
                         <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none"/>
                         <text font-family="ui-monospace, monospace" font-size="9" fill="var(--color-muted)" letter-spacing="3">
-                            <textPath href="#circlePath">✦ FULL-STACK ENGINEER · KEVIN KANIGARA · </textPath>
+                            <textPath href="#circlePath">✦ SOFTWARE ENGINEERING · RPL SMKN 2 BANDUNG · </textPath>
                         </text>
                     </svg>
                 </div>
@@ -119,15 +119,16 @@
             {{-- Bio paragraph --}}
             <div class="max-w-lg">
                 <p class="font-mono text-sm text-muted leading-relaxed">
-                    <span class="text-accent">›</span> I engineer distributed systems and developer tooling
-                    that people actually enjoy using. Currently obsessed with
-                    <span class="text-text">edge computing</span>,
-                    <span class="text-text">observability</span>, and making
-                    <span class="text-text">complex things simple</span>.
+                    <span class="text-accent">›</span> 17, studying Software Engineering (RPL) at
+                    <span class="text-text">SMKN 2 Bandung</span>. Five years of coding started in 6th grade,
+                    when I just really wanted to build a game.
                 </p>
                 <p class="font-mono text-sm text-muted leading-relaxed mt-3">
-                    <span class="text-accent">›</span> 5+ years shipping production code.
-                    30+ projects. 12k+ commits. No fear of hard problems.
+                    <span class="text-accent">›</span> Since then I've wandered through
+                    <span class="text-text">web development</span>,
+                    <span class="text-text">Linux</span>, home lab hosting,
+                    <span class="text-text">low-level programming</span>, and networking —
+                    building things, breaking them, fixing them.
                 </p>
             </div>
         </div>
@@ -179,21 +180,21 @@
                     <div class="font-mono text-4xl md:text-5xl text-text font-bold leading-none">
                         5<span class="text-accent">+</span>
                     </div>
-                    <div class="text-[10px] text-muted uppercase tracking-[0.2em] mt-1">Years EXP</div>
+                    <div class="text-[10px] text-muted uppercase tracking-[0.2em] mt-1">Years Coding</div>
                 </div>
                 <div class="w-px h-10 bg-border"></div>
                 <div>
                     <div class="font-mono text-4xl md:text-5xl text-text font-bold leading-none">
-                        30<span class="text-accent">+</span>
+                        6<span class="text-accent">+</span>
                     </div>
-                    <div class="text-[10px] text-muted uppercase tracking-[0.2em] mt-1">Projects</div>
+                    <div class="text-[10px] text-muted uppercase tracking-[0.2em] mt-1">Areas Explored</div>
                 </div>
                 <div class="w-px h-10 bg-border"></div>
                 <div>
                     <div class="font-mono text-4xl md:text-5xl text-text font-bold leading-none">
-                        12<span class="text-accent">k</span>
+                        <span class="text-accent">RPL</span>
                     </div>
-                    <div class="text-[10px] text-muted uppercase tracking-[0.2em] mt-1">Commits</div>
+                    <div class="text-[10px] text-muted uppercase tracking-[0.2em] mt-1">Student</div>
                 </div>
             </div>
         </div>
