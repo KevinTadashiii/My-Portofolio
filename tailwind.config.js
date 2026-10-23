@@ -12,7 +12,17 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Instrument Sans', ...defaultTheme.fontFamily.sans],
+                mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+            },
+            colors: {
+                accent:  'var(--color-accent)',
+                surface: 'var(--color-surface)',
+                'surface-raised': 'var(--color-surface-raised)',
+                border:  'var(--color-border)',
+                muted:   'var(--color-muted)',
+                text:    'var(--color-text)',
+                bg:      'var(--color-bg)',
             },
         },
     },
