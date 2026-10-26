@@ -1,71 +1,50 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="dark">
+<html lang="id">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="theme-color" content="#0B1115">
+    <meta name="description" content="Portofolio Kevin Kanigara, siswa RPL yang membangun aplikasi dan mengeksplorasi sistem di baliknya.">
 
-    <title>@yield('title', 'Kevin Kanigara — Engineer')</title>
+    <title>@yield('title', 'Kevin Kanigara — Systems Lab')</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-bg dark:bg-bg text-text antialiased">
+<body class="min-w-[320px] overflow-x-hidden antialiased">
+    <a class="sr-only focus:not-sr-only focus:top-3 focus:left-3 focus:z-[100] focus:translate-y-0 fixed top-3 left-3 translate-y-[-150%] rounded-[6px] bg-accent px-4 py-3 text-bg font-600 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4" href="#main-content">Langsung ke konten</a>
 
-{{-- Header --}}
-<header class="fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-6 border-b border-border bg-bg/80 dark:bg-bg/80 backdrop-blur-md">
-    <div class="flex items-center gap-8">
-        <a href="/" class="font-mono text-sm text-text hover:text-accent transition-colors">&gt; kevin_</a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-            <a href="#about" class="text-muted hover:text-text transition-colors">About</a>
-            <a href="#projects" class="text-muted hover:text-text transition-colors">Projects</a>
-            <a href="#experience" class="text-muted hover:text-text transition-colors">Experience</a>
-            <a href="#contact" class="text-muted hover:text-text transition-colors">Contact</a>
-        </nav>
-    </div>
-    <button id="theme-toggle" class="text-muted hover:text-accent transition-colors" aria-label="Toggle theme">
-        <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1M4.22 4.22l.707.707m12.728 12.728l.707.707M3 12h1m16 0h1M4.22 19.78l.707-.707M16.07 4.22l.707-.707M12 7a5 5 0 100 10A5 5 0 0012 7z"/>
-        </svg>
-        <svg id="icon-moon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-        </svg>
-    </button>
-</header>
+    <header class="sticky top-0 z-20 border-b border-border bg-bg/92 backdrop-blur-[16px]">
+        <div class="flex min-h-18 items-center justify-between gap-7 px-4.5 mx-auto w-full max-w-[1200px]">
+            <a class="inline-flex flex-0-0-auto items-center gap-2.5 text-inherit no-underline" href="#top" aria-label="Kevin Kanigara, kembali ke bagian atas">
+                <span class="grid w-7.5 h-7.5 place-items-center border border-accent rounded-[7px] text-accent font-mono text-[0.76rem] tracking-[-0.1em]" aria-hidden="true">kk</span>
+                <span class="text-text font-mono text-[0.78rem] tracking-[0.025em]">systems lab</span>
+            </a>
 
-<main class="pt-14">
-    @yield('content')
-</main>
+            <nav class="flex items-center gap-[clamp(16px,3vw,36px)]" aria-label="Navigasi utama">
+                <a class="relative py-2 text-muted text-[0.84rem] no-underline transition-colors hover:text-text" href="#about">Tentang</a>
+                <a class="relative py-2 text-muted text-[0.84rem] no-underline transition-colors hover:text-text" href="#projects">Proyek</a>
+                <a class="relative py-2 text-muted text-[0.84rem] no-underline transition-colors hover:text-text" href="#journey">Perjalanan</a>
+                <a class="relative py-2 text-muted text-[0.84rem] no-underline transition-colors hover:text-text" href="#contact">Kontak</a>
+            </nav>
+        </div>
+    </header>
 
-<footer class="border-t border-border py-3 px-6 flex items-center justify-between text-[11px] tracking-widest uppercase opacity-50 text-muted">
-    <span>&copy; {{ date('Y') }} Kevin Kanigara</span>
-    <span>e7f4a80</span>
-    <span>Laravel 11 + Tailwind 4</span>
-</footer>
+    <main id="main-content">
+        @yield('content')
+    </main>
 
-<script>
-    // Theme toggle
-    const btn = document.getElementById('theme-toggle');
-    const sun = document.getElementById('icon-sun');
-    const moon = document.getElementById('icon-moon');
+    <footer class="text-muted">
+        <div class="flex min-h-[78px] items-center justify-between gap-5 px-4.5 mx-auto w-full max-w-[1200px] font-mono text-[0.68rem]">
+            <span>&copy; {{ date('Y') }} Kevin Kanigara</span>
+            <a class="text-text no-underline hover:text-accent" href="#top">Systems Lab <span aria-hidden="true">↑</span></a>
+            <span>Dirangkai dengan Laravel</span>
+        </div>
+    </footer>
 
-    function setTheme(light) {
-        document.documentElement.setAttribute('data-theme', light ? 'light' : 'dark');
-        sun.classList.toggle('hidden', !light);
-        moon.classList.toggle('hidden', light);
-    }
-
-    btn.addEventListener('click', () => {
-        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        setTheme(!isLight);
-    });
-
-    // Check system preference
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) setTheme(true);
-</script>
-
-@stack('scripts')
+    @stack('scripts')
 </body>
 </html>
