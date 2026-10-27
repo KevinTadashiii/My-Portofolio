@@ -41,6 +41,10 @@ php artisan boost:install
 
 Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
+## Deployment
+
+This application is containerized and includes a Render Blueprint. See [docs/DEPLOY_RENDER.md](docs/DEPLOY_RENDER.md) for step-by-step Docker and Render deployment instructions.
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
