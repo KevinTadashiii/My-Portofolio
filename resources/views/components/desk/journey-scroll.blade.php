@@ -3,7 +3,7 @@
 
     <span>
         <span class="scroll-paper__eyebrow">learning journey</span>
-        <span class="scroll-paper__title">grade 6 &rarr; grade 10</span>
+        <span class="scroll-paper__title">grade 6 &rarr; grade 11</span>
     </span>
 
     <span class="scroll-paper__hint">unroll the timeline &rarr;</span>
