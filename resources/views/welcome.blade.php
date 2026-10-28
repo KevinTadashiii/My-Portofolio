@@ -78,14 +78,6 @@
                     @foreach ($about['paragraphs'] as $paragraph)
                         <p>{{ $paragraph }}</p>
                     @endforeach
-
-                    <p>
-                        @foreach ($about['links'] as $link)
-                            <a href="{{ $link['url'] }}" rel="noopener noreferrer" target="_blank">
-                                {{ $link['label'] }} &rarr; {{ $link['value'] }}
-                            </a>
-                        @endforeach
-                    </p>
                 </div>
             </div>
         </section>
