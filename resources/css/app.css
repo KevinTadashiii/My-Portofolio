@@ -553,6 +553,16 @@
         }
     }
 
+    /* Tablet only: here the folder sits directly under the tool rack, and its
+       tab is drawn 13px above the card. Reserving exactly that much space in
+       the folder row keeps every gap on the desk at the same value. */
+    @media (min-width: 768px) and (max-width: 959.98px) {
+        .desk__cell--folder,
+        .desk__cell--postcard {
+            padding-top: 13px;
+        }
+    }
+
     /* Desktop: the full overhead desk from the wireframe */
     @media (min-width: 960px) {
         .desk {
@@ -922,79 +932,300 @@
     }
 
     /* ======================================================================
-       Tool rack
+       Tool rack — a pegboard screwed to the wall, rails, tools on hooks
        ====================================================================== */
 
     .rack {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 0.55rem;
-        padding: 0.75rem;
-        border: 1px solid rgb(44 24 16 / 0.14);
-        border-radius: var(--radius-object);
-        background-color: rgb(255 253 248 / 0.75);
-        box-shadow: var(--shadow-object);
+        padding: 0.8rem 0.7rem 0.6rem;
+        border: 1px solid rgb(44 24 16 / 0.26);
+        border-radius: 14px;
+        background: linear-gradient(180deg, #f0e6d3 0%, #e2d2b7 100%);
+        box-shadow:
+            var(--shadow-object),
+            inset 0 1px 0 rgb(255 255 255 / 0.6),
+            inset 0 -3px 8px rgb(44 24 16 / 0.1);
+    }
+
+    /* Punched holes in the backing board */
+    .rack__back {
+        position: absolute;
+        inset: 0.45rem;
+        border-radius: 10px;
+        background-image: radial-gradient(circle, rgb(44 24 16 / 0.28) 1px, transparent 1.1px);
+        background-position: 4px 4px;
+        background-size: 12px 12px;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    /* Screws holding the board against the wall */
+    .rack__screw {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-image:
+            linear-gradient(126deg, transparent 44%, rgb(44 24 16 / 0.4) 44% 56%, transparent 56%),
+            radial-gradient(circle at 34% 30%, #dcc7a2, #8b7050 62%, #5f4a33);
+        box-shadow: 0 1px 1px rgb(255 255 255 / 0.55);
+    }
+
+    .rack__screw--tl {
+        top: 0.35rem;
+        left: 0.35rem;
+    }
+
+    .rack__screw--tr {
+        top: 0.35rem;
+        right: 0.35rem;
+    }
+
+    .rack__screw--bl {
+        bottom: 0.35rem;
+        left: 0.35rem;
+    }
+
+    .rack__screw--br {
+        bottom: 0.35rem;
+        right: 0.35rem;
+    }
+
+    .rack__plaque {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-inline: 0.3rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid rgb(44 24 16 / 0.16);
+        font-family: var(--font-mono);
+        font-size: 0.5rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--color-ink-3);
+    }
+
+    .rack__plaque-count {
+        color: var(--color-rust-deep);
+    }
+
+    .rack__rails {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
     }
 
     .rack__rail {
-        height: 8px;
+        position: relative;
+    }
+
+    /* The rail the tools hang from, with a bracket at each end */
+    .rack__bar {
+        position: absolute;
+        top: 0.35rem;
+        left: 0;
+        right: 0;
+        height: 7px;
         border-radius: 999px;
-        background: linear-gradient(180deg, #b08a5d, #8d6a42);
-        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
+        background: linear-gradient(180deg, #ddcaa6 0%, #bb9c6d 45%, #8a6a44 100%);
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.5),
+            0 2px 3px -1px rgb(44 24 16 / 0.4);
+    }
+
+    .rack__bar::before,
+    .rack__bar::after {
+        content: "";
+        position: absolute;
+        top: -3px;
+        width: 9px;
+        height: 13px;
+        border-radius: 3px;
+        background: linear-gradient(180deg, #9c7a4f, #6f5334);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.3);
+    }
+
+    .rack__bar::before {
+        left: -3px;
+    }
+
+    .rack__bar::after {
+        right: -3px;
     }
 
     .rack__tools {
+        position: relative;
+        z-index: 1;
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
+        gap: 0.25rem;
         list-style: none;
         margin: 0;
         padding: 0;
+    }
+
+    .rack__tools > li {
+        position: relative;
+        display: flex;
+        flex: 1 1 0;
+        justify-content: center;
+        min-width: 0;
+        /* Leaves the wire of the hook visible between the rail and the tool,
+           so a lifted tool clears the rail instead of sliding onto it. */
+        padding-top: 20px;
     }
 
     .rack__tool {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.2rem;
+        gap: 0.15rem;
+        width: 100%;
+        min-width: 0;
+        padding: 0 0.15rem 0.2rem;
         border: 1px solid transparent;
         border-radius: 10px;
         background: transparent;
-        padding: 0.3rem 0.35rem;
         cursor: pointer;
-        transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+        color: var(--color-ink);
+        /* Swings from the point where it meets the hook, never from the rail. */
+        transform-origin: 50% 0;
+        transition: background-color 150ms ease, border-color 150ms ease, transform 180ms ease;
     }
 
+    /* Hover only nudges the tool; the plate brightens like fresh polish */
     .rack__tool:hover {
-        transform: translateY(-2px);
-        border-color: rgb(44 24 16 / 0.16);
-        background: rgb(44 24 16 / 0.04);
+        transform: translateY(-3px);
+    }
+
+    .rack__tool:hover .rack__label {
+        background: linear-gradient(180deg, #f0dcaa, #d6b573);
+    }
+
+    /* The wire that loops over the rail — fixed to the rail, so it stays put */
+    .rack__hook {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -6.5px;
+        width: 13px;
+        height: 20px;
+        border: 2px solid #6f5334;
+        border-bottom: 0;
+        border-radius: 8px 8px 0 0;
+        background: linear-gradient(180deg, #d3b892, #95734b);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4);
     }
 
     .rack__icon {
+        display: flex;
+        align-items: center;
+        gap: 0.15rem;
         line-height: 0;
+        color: var(--color-ink);
+        filter: drop-shadow(0 2px 2px rgb(44 24 16 / 0.3));
     }
 
     .rack__icon svg {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
 
+    /* Engraved brass nameplate under every tool */
     .rack__label {
+        /* The plate grows past its hook when the name is long, so a name such
+           as "JavaScript / TypeScript" breaks between words instead of mid-word. */
+        width: max-content;
+        max-width: 6.5rem;
+        border-radius: 3px;
+        padding: 0.05rem 0.3rem;
+        background: linear-gradient(180deg, #e4ce9f, #c9a869);
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.55),
+            inset 0 -1px 0 rgb(44 24 16 / 0.18);
         font-family: var(--font-mono);
-        font-size: 0.58rem;
-        letter-spacing: 0.06em;
+        font-size: 0.5rem;
+        line-height: 1.25;
+        letter-spacing: 0.04em;
+        text-align: center;
         text-transform: uppercase;
-        color: var(--color-ink-2);
+        overflow-wrap: break-word;
+        color: rgb(44 24 16 / 0.8);
+        transition: background 150ms ease, color 150ms ease;
     }
 
-    .rack__details:empty {
-        display: none;
+    /* A selected tool is lifted off its hook and tilts in your hand */
+    .rack__tool[aria-expanded="true"] {
+        transform: translateY(-5px) rotate(-1.5deg);
+        border-color: rgb(163 70 42 / 0.35);
+        background: rgb(255 255 255 / 0.45);
     }
 
+    .rack__tool[aria-expanded="true"] .rack__icon {
+        color: var(--color-rust-deep);
+    }
+
+    .rack__tool[aria-expanded="true"] .rack__label {
+        background: linear-gradient(180deg, #c05b39, #a3462a);
+        color: var(--color-paper);
+    }
+
+    /* The tag slot keeps a fixed height in every state, so picking a tool never
+       grows the rack and the notes, folder and journey around it stay put. */
+    .rack__details {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 4.8rem;
+    }
+
+    /* At the narrowest desktop column the labels need a third row */
+    @media (min-width: 960px) and (max-width: 1099.98px) {
+        .rack__details {
+            min-height: 6rem;
+        }
+    }
+
+    /* At rest the slot is bare board with a handwritten note on it */
+    .rack__hint {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        font-family: var(--font-hand);
+        font-size: 0.95rem;
+        line-height: 1.2;
+        text-align: center;
+        color: var(--color-ink-3);
+    }
+
+    /* Taped work order that drops onto the board when a tool is picked up */
     .rack__detail {
-        border-top: 1px dashed rgb(44 24 16 / 0.25);
-        padding-top: 0.5rem;
+        position: relative;
+        border: 1px dashed rgb(44 24 16 / 0.3);
+        border-radius: 8px;
+        padding: 0.55rem 0.55rem 0.45rem;
+        background: linear-gradient(180deg, #fffdf6, #f4ecdc);
+        box-shadow: 0 14px 20px -16px rgb(44 24 16 / 0.75);
+    }
+
+    .rack__detail::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        width: 46px;
+        height: 13px;
+        transform: translateX(-50%) rotate(-1.5deg);
+        border: 1px dashed rgb(44 24 16 / 0.16);
+        border-radius: 2px;
+        background: rgb(255 255 255 / 0.5);
     }
 
     .rack__detail-title {
@@ -1008,18 +1239,18 @@
     .rack__skill-list {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.3rem;
+        gap: 0.25rem;
         list-style: none;
-        margin: 0.35rem 0 0;
+        margin: 0.3rem 0 0;
         padding: 0;
     }
 
     .rack__skill-list li {
         border-radius: 6px;
         background: rgb(44 24 16 / 0.06);
-        padding: 0.12rem 0.4rem;
+        padding: 0.1rem 0.35rem;
         font-family: var(--font-mono);
-        font-size: 0.6rem;
+        font-size: 0.55rem;
         color: var(--color-ink-2);
     }
 
