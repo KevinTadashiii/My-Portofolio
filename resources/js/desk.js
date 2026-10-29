@@ -10,6 +10,7 @@ import { DeskTerminal } from './terminal.js';
 
 const STATUS_LABELS = {
     live: 'Live',
+    complete: 'Complete',
     in_progress: 'In progress',
     archived: 'Archived',
 };
@@ -32,7 +33,99 @@ function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+const PROJECTS_PER_PAGE = 5;
+
+function initProjectPagination() {
+    const grid = document.querySelector('[data-project-grid]');
+    const pagination = document.querySelector('[data-project-pagination]');
+
+    if (!grid || !pagination) {
+        return;
+    }
+
+    const cards = Array.from(grid.querySelectorAll('[data-project-card]'));
+    const pageCount = Math.ceil(cards.length / PROJECTS_PER_PAGE);
+
+    if (pageCount <= 1) {
+        return;
+    }
+
+    let currentPage = 1;
+
+    function scrollToProjects() {
+        document.getElementById('projects')?.scrollIntoView({
+            behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+            block: 'start',
+        });
+    }
+
+    function createButton(label, { page, disabled = false, current = false, ariaLabel }) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'project-pagination__button';
+        button.textContent = label;
+        button.disabled = disabled;
+
+        if (ariaLabel) {
+            button.setAttribute('aria-label', ariaLabel);
+        }
+
+        if (current) {
+            button.setAttribute('aria-current', 'page');
+        }
+
+        if (page !== undefined) {
+            button.addEventListener('click', () => {
+                if (page === currentPage) {
+                    return;
+                }
+
+                currentPage = page;
+                render();
+                pagination.querySelector('[aria-current="page"]')?.focus({ preventScroll: true });
+
+            });
+        }
+
+        return button;
+    }
+
+    function render() {
+        cards.forEach((card, index) => {
+            card.hidden = Math.floor(index / PROJECTS_PER_PAGE) + 1 !== currentPage;
+        });
+
+        pagination.replaceChildren(
+            createButton('← Prev', {
+                page: currentPage - 1,
+                disabled: currentPage === 1,
+                ariaLabel: 'Previous project page',
+            }),
+            ...Array.from({ length: pageCount }, (_, index) => {
+                const page = index + 1;
+
+                return createButton(String(page), {
+                    page,
+                    current: page === currentPage,
+                    ariaLabel: `Project page ${page}`,
+                });
+            }),
+            createButton('Next →', {
+                page: currentPage + 1,
+                disabled: currentPage === pageCount,
+                ariaLabel: 'Next project page',
+            }),
+        );
+
+        pagination.hidden = false;
+    }
+
+    render();
+}
+
 export function initDesk() {
+    initProjectPagination();
+
     const desk = document.querySelector('[data-desk]');
     const terminalRoot = document.querySelector('[data-terminal]');
 

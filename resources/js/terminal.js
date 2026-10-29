@@ -21,6 +21,7 @@ const COMMAND_REFERENCE = [
 
 const STATUS_LABELS = {
     live: 'Live',
+    complete: 'Complete',
     in_progress: 'In progress',
     archived: 'Archived',
 };
@@ -258,7 +259,7 @@ export class DeskTerminal {
         const projects = Object.entries(this.manifest.projects ?? {});
 
         if (projects.length === 0) {
-            this.writeLine('No verified projects are listed yet.');
+            this.writeLine('The project folder is empty. The desk is not.');
             this.writeLine('Ask me directly — there is always something half-finished on the desk.', 'muted');
             return;
         }

@@ -93,11 +93,12 @@
 
             <div class="paper section__body">
                 @if (count($projects) > 0)
-                    <div class="project-grid">
+                    <div class="project-grid" data-project-grid>
                         @foreach ($projects as $slug => $project)
                             <button
                                 type="button"
                                 class="project-card"
+                                data-project-card
                                 data-project-open="{{ $slug }}"
                             >
                                 <span class="project-card__title">{{ $project['title'] }}</span>
@@ -110,15 +111,18 @@
                             </button>
                         @endforeach
                     </div>
+
+                    <nav class="project-pagination" data-project-pagination aria-label="Project pages" hidden></nav>
                 @else
                     <div class="empty-state">
-                        <p class="empty-state__title">No verified projects are listed yet.</p>
+                        <p class="empty-state__title">The project folder is empty. The desk is not.</p>
                         <p class="empty-state__body">
-                            Nothing is published here until the build, the write-up and the status are
-                            confirmed. It is a short list on purpose &mdash; ask me directly what is
-                            currently on the desk.
+                            Nothing gets filed here until it builds, survives its own write-up and
+                            can be shown without a disclaimer. Everything else is still on the desk,
+                            somewhere between the coffee and the 2 AM bug &mdash; ask me what's
+                            currently there.
                         </p>
-                        <a class="empty-state__link" href="#contact">get in touch &rarr;</a>
+                        <a class="empty-state__link" href="#contact">ask what's on the desk &rarr;</a>
                     </div>
                 @endif
             </div>

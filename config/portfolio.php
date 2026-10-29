@@ -43,14 +43,76 @@ return [
     | a warning label. See the README for the steps to add one.
     */
     'projects' => [
-        // Add your projects here when ready. Example:
-        // 'project-slug' => [
-        //     'title' => 'Project Title',
-        //     'summary' => 'One-line description of what it does.',
-        //     'stack' => ['Laravel', 'Tailwind CSS', 'PostgreSQL'],
-        //     'status' => 'in_progress', // or 'complete'
-        //     'url' => 'https://github.com/KevinTadashiii/project-slug',
-        // ],
+        'my-portofolio' => [
+            'title' => 'This Portfolio',
+            'summary' => 'The site you are reading: a Laravel app with a Blade front end, a hand-built desk, and a terminal that answers.',
+            'stack' => ['Laravel', 'PHP', 'Blade', 'Tailwind CSS', 'Alpine.js', 'Vite'],
+            'status' => 'live',
+            'url' => 'https://github.com/KevinTadashiii/My-Portofolio',
+        ],
+        'valorant-esport' => [
+            'title' => 'Valorant Esport',
+            'summary' => 'A browser game where you build, manage, and lead a Valorant esports team through the competitive season.',
+            'stack' => ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'Vitest'],
+            'status' => 'in_progress',
+            'url' => 'https://github.com/KevinTadashiii/Valorant-Esport',
+        ],
+        'manajemen-inventaris-lab-rpl' => [
+            'title' => 'RPL Lab Inventory',
+            'summary' => 'A Laravel dashboard for the school\'s RPL lab: categories, item records, and the equipment count at a glance.',
+            'stack' => ['Laravel', 'PHP', 'Blade', 'Tailwind CSS', 'SQLite', 'Vite'],
+            'status' => 'in_progress',
+            'url' => 'https://github.com/KevinTadashiii/Manajemen-Inventaris-Lab-RPL',
+        ],
+        'simple-neural-network' => [
+            'title' => 'Simple Neural Network',
+            'summary' => 'One neuron, no ML libraries: a from-scratch classifier trained with sigmoid, mean squared error, and gradient descent.',
+            'stack' => ['Python', 'uv', 'Gradient Descent'],
+            'status' => 'complete',
+            'url' => 'https://github.com/KevinTadashiii/simple-neural-network',
+        ],
+        'dht22-api' => [
+            'title' => 'DHT22 API',
+            'summary' => 'ESP32 firmware that reads a DHT22 sensor and serves temperature and humidity over HTTP on the local network.',
+            'stack' => ['C', 'ESP-IDF', 'ESP32', 'FreeRTOS', 'HTTP'],
+            'status' => 'complete',
+            'url' => 'https://github.com/KevinTadashiii/DHT22-API',
+        ],
+        'cpb-interpreter' => [
+            'title' => 'CPB Interpreter',
+            'summary' => 'A Brainfuck interpreter in C++ built to understand parsing, memory, and what every instruction actually costs.',
+            'stack' => ['C++', 'CMake', 'Ninja'],
+            'status' => 'complete',
+            'url' => 'https://github.com/KevinTadashiii/CPB_Interpreter',
+        ],
+        'rusty-brainfuck-interpreter' => [
+            'title' => 'Rusty Brainfuck Interpreter',
+            'summary' => 'The same Brainfuck interpreter rebuilt in Rust — a second pass at the problem with ownership and a stricter compiler.',
+            'stack' => ['Rust', 'Cargo'],
+            'status' => 'complete',
+            'url' => 'https://github.com/KevinTadashiii/rusty-brainfuck-interpreter',
+        ],
+        'pisnake' => [
+            'title' => 'PISNAKE',
+            'summary' => 'A snake game built with LÖVE and Lua: my first finished game loop, from window setup to collision and scoring.',
+            'stack' => ['Lua', 'LÖVE'],
+            'status' => 'complete',
+            'url' => 'https://github.com/KevinTadashiii/PISNAKE',
+        ],
+        'mono-calculator' => [
+            'title' => 'Mono Calculator',
+            'summary' => 'A small Android calculator built to learn Kotlin, Jetpack Compose, and clean UI state.',
+            'stack' => ['Kotlin', 'Jetpack Compose', 'Android', 'Gradle'],
+            'status' => 'complete',
+            'url' => 'https://github.com/KevinTadashiii/mono-calculator',
+        ],
+        'my-simple-portofolio-website' => [
+            'title' => 'First Portfolio Site',
+            'summary' => 'The first portfolio I shipped: hand-written HTML and CSS with Tailwind, deployed on GitHub Pages.',
+            'stack' => ['HTML', 'CSS', 'Tailwind CSS', 'GitHub Pages'],
+            'status' => 'live',
+            'url' => 'https://github.com/KevinTadashiii/my-simple-portofolio-website',
+        ],
     ],
 
     'skills' => [
