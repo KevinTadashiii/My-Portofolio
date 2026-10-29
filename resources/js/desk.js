@@ -52,13 +52,6 @@ function initProjectPagination() {
 
     let currentPage = 1;
 
-    function scrollToProjects() {
-        document.getElementById('projects')?.scrollIntoView({
-            behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-            block: 'start',
-        });
-    }
-
     function createButton(label, { page, disabled = false, current = false, ariaLabel }) {
         const button = document.createElement('button');
         button.type = 'button';
@@ -83,7 +76,6 @@ function initProjectPagination() {
                 currentPage = page;
                 render();
                 pagination.querySelector('[aria-current="page"]')?.focus({ preventScroll: true });
-
             });
         }
 
